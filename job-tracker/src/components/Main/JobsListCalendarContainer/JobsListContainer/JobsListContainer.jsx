@@ -1,3 +1,4 @@
+import JobCard from '../../JobCard/JobCard'
 import './JobsListContainer.css'
 
 const JobsListContainer = () => {
@@ -9,59 +10,27 @@ const JobsListContainer = () => {
       </div>
 
       <div className="jobs-list-container__list">
-        <div className="jobs-list-container__job-item">
-          <div className="jobs-list-container__company">
-            <div className="jobs-list-container__img-wrapper">
-              <img src="/images/emap-logo.png" alt="EPAM logo" />
-            </div>
-            <div className="jobs-list-container__job-info">
-              <h5>EPAM Systems</h5>
-              <p>Frontend Intern</p>
-            </div>
-          </div>
-          <div className="jobs-list-container__job-date">
-            18 Apr
-          </div>
-          <span className="jobs-list-container__status jobs-list-container__status--applied">
-            Applied
-          </span>
-        </div>
-
-        <div className="jobs-list-container__job-item">
-          <div className="jobs-list-container__company">
-            <div className="jobs-list-container__img-wrapper">
-              <img src="/images/emap-logo.png" alt="EPAM logo" />
-            </div>
-            <div className="jobs-list-container__job-info">
-              <h5>Siemens</h5>
-              <p>QA Intern</p>
-            </div>
-          </div>
-          <div className="jobs-list-container__job-date">
-            17 Apr
-          </div>
-          <span className="jobs-list-container__status jobs-list-container__status--waiting">
-            Want to Apply
-          </span>
-        </div>
-
-        <div className="jobs-list-container__job-item">
-          <div className="jobs-list-container__company">
-            <div className="jobs-list-container__img-wrapper">
-              <img src="/images/emap-logo.png" alt="EPAM logo" />
-            </div>
-            <div className="jobs-list-container__job-info">
-              <h5>Synopsys</h5>
-              <p>Software Engineer Intern</p>
-            </div>
-          </div>
-          <div className="jobs-list-container__job-date">
-            15 Apr
-          </div>
-          <span className="jobs-list-container__status jobs-list-container__status--interview">
-            Interview
-          </span>
-        </div>
+        <JobCard
+          company="EPAM Systems"
+          position="Frontend Intern"
+          date="18 Apr"
+          status="Applied"
+          statusType="applied"
+        />
+        <JobCard
+          company="Siemens"
+          position="QA Intern"
+          date="17 Apr"
+          status="Want to Apply"
+          statusType="waiting"
+        />
+        <JobCard
+          company="Synopsys"
+          position="Software Engineer Intern"
+          date="15 Apr"
+          status="Interview"
+          statusType="interview"
+        />
       </div>
     </section>
   )
