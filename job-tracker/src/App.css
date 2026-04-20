@@ -1,3 +1,10 @@
 .app{
   display: flex;
+  min-height: 100vh;
+}
+
+@media (max-width: 900px) {
+  .app{
+    flex-direction: column;
+  }
 }

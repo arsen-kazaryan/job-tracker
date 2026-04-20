@@ -1,0 +1,14 @@
+import CalendarContainer from './CalendarContainer/CalendarContainer'
+import './JobsListCalendarContainer.css'
+import JobsListContainer from "./JobsListContainer/JobsListContainer"
+
+const JobsListCalendarContainer = () => {
+  return (
+    <section className="jobs-list-calendar-container">
+      <JobsListContainer/>
+      <CalendarContainer/>
+    </section>
+  )
+}
+
+export default JobsListCalendarContainer

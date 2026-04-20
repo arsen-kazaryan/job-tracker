@@ -1,0 +1,37 @@
+.jobs-list-calendar-container {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 20px;
+  width: 100%;
+}
+
+.jobs-list-container,
+.calendar-container {
+  background-color: var(--panel);
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+@media (max-width: 1100px) {
+  .jobs-list-calendar-container {
+    grid-template-columns: 1fr;
+  }
+
+  .calendar-container{
+    order: -1;
+  }
+}
+
+@media (max-width: 800px) {
+  .jobs-list-container,
+  .calendar-container {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+  }
+
+  .calendar-container{
+    display: none;
+  }
+}

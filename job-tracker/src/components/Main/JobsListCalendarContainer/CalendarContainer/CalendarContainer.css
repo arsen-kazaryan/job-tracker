@@ -1,0 +1,150 @@
+.calendar-container{
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.calendar-container__title{
+  color: var(--text-primary);
+  font-size: 18px;
+}
+
+.calendar-container__card{
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+  border-radius: 8px;
+  background-color: var(--background-color);
+}
+
+.calendar-container__icon-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 22px;
+  border-radius: 8px;
+  background-color: #06251d;
+
+  img{
+    width: 26px;
+    height: 26px;
+  }
+}
+
+.calendar-container__text{
+  margin: 0 0 12px;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+.calendar-container__job-info{
+  margin-bottom: 22px;
+
+  h5{
+    color: var(--text-primary);
+    font-size: 20px;
+    margin: 0 0 8px;
+  }
+
+  p{
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+}
+
+.calendar-container__details{
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.calendar-container__detail{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-primary);
+  font-size: 14px;
+
+  img{
+    width: 16px;
+    height: 16px;
+    opacity: 0.8;
+  }
+}
+
+.calendar-container__button{
+  width: 100%;
+  border: none;
+  border-radius: 6px;
+  padding: 12px;
+  background-color: #08a657;
+  color: var(--background-color);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+
+  &:hover{
+    background-color: var(--accent-green);
+  }
+}
+
+@media (max-width: 1100px) {
+  .calendar-container{
+    width: 100%;
+    gap: 12px;
+  }
+
+  .calendar-container__card{
+    width: 100%;
+    padding: 14px;
+  }
+
+  .calendar-container__icon-wrapper{
+    width: 42px;
+    height: 42px;
+    margin-bottom: 12px;
+
+    img{
+      width: 22px;
+      height: 22px;
+    }
+  }
+
+  .calendar-container__text{
+    margin-bottom: 8px;
+    font-size: 13px;
+  }
+
+  .calendar-container__job-info{
+    margin-bottom: 14px;
+
+    h5{
+      font-size: 17px;
+      margin-bottom: 4px;
+    }
+
+    p{
+      font-size: 13px;
+    }
+  }
+
+  .calendar-container__details{
+    gap: 18px;
+    margin-bottom: 16px;
+  }
+
+  .calendar-container__detail{
+    font-size: 13px;
+  }
+
+  .calendar-container__button{
+    padding: 10px;
+    font-size: 13px;
+  }
+}
