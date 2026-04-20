@@ -1,0 +1,69 @@
+.statistic-section {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.statistic-section__container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  border: 2px solid var(--border-color);
+  padding: 20px  15px;
+  transition: 0.2s ease;
+  &:hover{
+    background-color: #142135b0;
+  }
+}
+.statistic-section__container-title{
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.statistic-section__container-desc{
+  color: var(--text-primary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.statistic-section__container-num{
+  font-size: 24px;
+  font-weight: 600;
+}
+.statistic-section__container-img-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  transition: 0.2s ease;
+}
+.statistic-section__img{
+  width: 40px;
+}
+.bg-green{
+  background-color:#0B1F1D;
+  &:hover{
+    opacity: 0.6;
+  }
+}
+.bg-blue{
+  background-color:#101B2C;
+  &:hover{
+    opacity: 0.6;
+  }
+}
+.bg-darkblue{
+  background-color:#121728;
+  &:hover{
+    opacity: 0.6;
+  }
+}
+.bg-gold{
+  background-color:#201E19;
+  &:hover{
+    opacity: 0.6;
+  }
+}
