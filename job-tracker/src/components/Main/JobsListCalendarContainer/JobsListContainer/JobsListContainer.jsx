@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { jobs } from '../../../data/jobCard.js'
 import JobCard from '../../JobCard/JobCard'
 import './JobsListContainer.css'
@@ -8,7 +9,7 @@ const JobsListContainer = () => {
     <section className='jobs-list-container'>
       <div className="jobs-list-container__header">
         <h4>Recent</h4>
-        <a href="/">View All</a>
+        <Link to='/alljobs'>View All</Link>
       </div>
       <div className="jobs-list-container__list">
         {jobSlice.map((job)=>(

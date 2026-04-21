@@ -7,6 +7,10 @@
   height: 100vh;
 }
 
+.active{
+  color: var(--accent-green);
+  background-color: #071C1A;
+}
 .nav-menu__section {
   height: 100%;
   display: flex;
@@ -252,7 +256,6 @@
       border-radius: 2px;
       background-color: var(--text-primary);
     }
-
   }
 
   .nav-menu__logo-img{

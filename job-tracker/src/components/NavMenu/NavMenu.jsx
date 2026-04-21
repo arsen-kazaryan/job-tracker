@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import './NavMenu.css'
 
 const NavMenu = () => {
@@ -11,8 +12,18 @@ const NavMenu = () => {
         </div>
         <p className="nav-menu__container-title">MAIN</p>
         <div className="nav-menu__links-container nav-menu__links-container--main">
-          <a href="/" className="nav-menu__overview nav-menu-link">Overview</a>
-          <a href="/" className="nav-menu__all-jobs nav-menu-link">All Jobs</a>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive
+                ? "nav-menu__overview nav-menu-link active"
+                : 'nav-menu__overview nav-menu-link'}>Overview</NavLink>
+          <NavLink
+            to="/alljobs"
+            className={({ isActive }) =>
+              isActive
+                ? "nav-menu__all-jobs nav-menu-link active"
+                : 'nav-menu__all-jobs nav-menu-link'}>All Jobs</NavLink>
           <a href="/" className="nav-menu__add-job nav-menu-link">Add Job</a>
         </div>
         <p className="nav-menu__container-title">TRACKING</p>
