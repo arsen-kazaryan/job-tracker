@@ -1,11 +1,11 @@
 import './JobCard.css'
 
-const JobCard = ({ company, position, date, status, statusType = 'applied' }) => {
+const JobCard = ({ company, position, date, status, statusType = 'applied', img }) => {
   return (
     <div className="job-card">
       <div className="job-card__company">
         <div className="job-card__img-wrapper">
-          <img src="/images/emap-logo.png" alt={`${company} logo`} />
+          <img src={img} alt={`${company} logo`} />
         </div>
         <div className="job-card__job-info">
           <h5>{company}</h5>
