@@ -13,7 +13,7 @@ export const jobs = [
     company:"Siemens",
     position:"QA Intern",
     date:"17 Apr",
-    status:"Want to Apply",
+    status:"Waiting",
     statusType:"waiting",
     img:'/images/emap-logo.png'
   },
@@ -40,17 +40,26 @@ export const jobs = [
     company:"Siemens",
     position:"QA Intern",
     date:"17 Apr",
-    status:"Want to Apply",
+    status:"Waiting",
     statusType:"waiting",
     img:'/images/emap-logo.png'
   },
-    {
+  {
     id: 6,
     company:"EPAM Systems",
     position:"Frontend Intern",
     date:"18 Apr",
     status:"Rejected",
     statusType:"rejected",
+    img:'/images/emap-logo.png'
+  },
+  {
+    id: 7,
+    company:"EPAM Systems",
+    position:"Frontend Intern",
+    date:"18 Apr",
+    status:"New",
+    statusType:"new",
     img:'/images/emap-logo.png'
   },
 ]

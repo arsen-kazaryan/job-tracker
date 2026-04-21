@@ -82,6 +82,10 @@
   color: var(--accent-red);
   background-color: rgba(175, 42, 5, 0.12);
 }
+.job-card__status--new{
+  color: rgb(0, 217, 0);
+  background-color: rgba(0, 128, 0, 0.282);
+}
 
 @media (max-width: 700px) {
   .job-card{

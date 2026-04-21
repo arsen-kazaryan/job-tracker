@@ -1,4 +1,6 @@
 .nav-menu {
+  position: sticky;
+  top: 0;
   width: 270px;
   flex: 0 0 270px;
   padding: 20px 16px;
@@ -6,7 +8,10 @@
   border: 2px solid var(--border-color);
   height: 100vh;
 }
-
+.app{
+  display: flex;
+  
+}
 .active{
   color: var(--accent-green);
   background-color: #071C1A;
@@ -311,29 +316,7 @@
   }
 
   .nav-menu__add-job{
-    position: fixed;
-    left: 50%;
-    bottom: 16px;
-    transform: translateX(-50%);
-    z-index: 40;
-    width: 54px;
-    height: 54px;
-    border-radius: 50%;
-    background-color: #0f9f67;
-    color: var(--text-primary);
-    font-size: 0;
-    box-shadow: 0 0 20px rgba(40, 233, 140, 0.25);
-
-    &::before{
-      content: "+";
-      width: auto;
-      height: auto;
-      margin-right: 0;
-      background-image: none;
-      color: var(--text-primary);
-      font-size: 28px;
-      line-height: 1;
-    }
+    display: none !important;
   }
 
   .nav-menu-link::before {

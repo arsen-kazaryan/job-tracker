@@ -5,16 +5,19 @@
   gap: 20px;
   padding: 5px 15px;
 }
+
 .header-section__title-container{
   display: flex;
   flex-direction: column;
-    h2{
-      color: var(--text-primary);
-    }
-    p{
-      font-size: 14px;
-      color: var(--text-muted);
-    }
+
+  h2{
+    color: var(--text-primary);
+  }
+
+  p{
+    font-size: 14px;
+    color: var(--text-muted);
+  }
 }
 
 .header-section__search-container{
@@ -30,36 +33,21 @@
     background-color: var(--panel);
     color: var(--text-primary);
     transition: 0.2s ease;
+
     &::placeholder{
       color: var(--text-muted);
       font-size: 14px;
       opacity: 1;
     }
+
     &:focus{
       outline: 1px solid var(--accent-green);
     }
+
     &:focus::placeholder{
       opacity: 0;
     }
   }
-}
-
-.header-section__search-button{
-  border: none;
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 550;
-  padding: 10px;
-  background-color: var(--accent-green);
-  border-radius: 5px;
-  color: var(--background-color);
-  transition: 0.2s ease;
-  cursor: pointer;
-  &:hover{
-    background-color: rgb(121, 246, 102);
-  }
-}
-.header-section__button-icon{
-  display: none;
 }
 
 @media (max-width: 900px) {
@@ -83,8 +71,6 @@
     padding: 5px 0;
   }
 
-
-
   .header-section__desc{
     margin: 4px 0 0;
     font-size: 12px;
@@ -96,6 +82,8 @@
 
   .header-section__search-container{
     width: 100%;
+    flex-direction: column;
+    align-items: stretch;
 
     input{
       width: 100%;
@@ -105,55 +93,9 @@
 
 @media (max-width: 480px) {
   .header-section__search-container{
-    flex-direction: row;
-    align-items: center;
-
     input{
       height: 40px;
       font-size: 12px;
-    }
-  }
-
-  .header-section__search-button{
-    width: 42px;
-    height: 40px;
-    border: 1px solid var(--border-color);
-    background-color: var(--panel);
-
-    &:hover{
-      background-color: var(--panel-soft);
-    }
-  }
-
-  .header-section__button-text{
-    display: none;
-  }
-
-  .header-section__button-icon{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 18px;
-    height: 18px;
-    position: relative;
-
-    &::before,
-    &::after{
-      content: "";
-      position: absolute;
-      width: 16px;
-      height: 2px;
-      border-radius: 2px;
-      background-color: var(--text-primary);
-    }
-
-    &::before{
-      top: 5px;
-    }
-
-    &::after{
-      bottom: 5px;
-      width: 10px;
     }
   }
 }

@@ -1,0 +1,25 @@
+.add-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background-color: var(--accent-green);
+  color: var(--background-color);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.add-button:hover{
+  background-color: rgb(121, 246, 102);
+}
+
+@media (max-width: 700px) {
+  .add-button{
+    width: 100%;
+  }
+}

@@ -1,0 +1,30 @@
+.button-filter{
+  border: 1px solid var(--border-color);
+  padding: 9px 14px;
+  border-radius: 8px;
+  background-color: var(--panel-soft);
+  color: var(--text-muted);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+
+  &:hover{
+    color: var(--text-primary);
+    border-color: rgba(40, 233, 140, 0.25);
+  }
+}
+
+.button-filter--active{
+  color: var(--background-color);
+  background-color: var(--accent-green);
+  border-color: transparent;
+}
+
+@media (max-width: 700px) {
+  .button-filter{
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+}
