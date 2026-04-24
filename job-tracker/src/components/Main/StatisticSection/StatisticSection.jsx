@@ -1,6 +1,5 @@
-import { jobs } from '../../data/jobCard'
 import './StatisticSection.css'
-const StatisticSection = () => {
+const StatisticSection = ({ jobs }) => {
   const total = jobs.length
   const appliedNum = jobs.filter(job=> job.statusType === 'applied').length
   const interviewNum = jobs.filter(job=> job.statusType === 'interview').length

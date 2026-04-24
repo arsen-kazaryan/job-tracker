@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom'
-import { jobs } from '../../../data/jobCard.js'
 import JobCard from '../../JobCard/JobCard'
 import './JobsListContainer.css'
 
-const JobsListContainer = () => {
+const JobsListContainer = ({ jobs }) => {
   const jobSlice = jobs.slice(0, 3)
   return (
     <section className='jobs-list-container'>

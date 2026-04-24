@@ -1,11 +1,10 @@
 import { useState } from 'react'
 import AddButton from '../../Button/AddButton'
 import Button from '../../Button/Button'
-import { jobs } from '../../data/jobCard'
 import JobCard from '../../Main/JobCard/JobCard'
 import './AllJobs.css'
 
-const AllJobs = () => {
+const AllJobs = ({ jobs }) => {
   const [activeFilter, setActiveFilter] = useState('all')
 
   const filters = [
