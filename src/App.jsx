@@ -20,7 +20,7 @@ function getStoredJobs() {
 }
 
 function App() {
-  const [jobs] = useState(getStoredJobs) // Здесь передается сама функция а не результат его вызова. React вызвет его при первом рендере и возмет его резльат как начальное значение
+  const [jobs, setJobs] = useState(getStoredJobs) // Здесь передается сама функция а не результат его вызова. React вызвет его при первом рендере и возмет его резльат как начальное значение
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(jobs))
@@ -34,14 +34,18 @@ function App() {
     4. реакт кладет их в state
     5. useEffect - сохраняет в localStorage
   */}
+  const deleteJob = (id)=>{
+    setJobs((jobs)=> jobs.filter(job => job.id !== id))
+  }
+  {/*id - Это вакансия которую надо удалить, а filter создает новый массив и него попадут все вакансии кроме нужной  */}
 
 
   return (
     <div className='app'>
       <NavMenu />
       <Routes >
-        <Route path="/" element={<Main jobs={jobs} />} />
-        <Route path="/alljobs" element={<AllJobs jobs={jobs} />} />
+        <Route path="/" element={<Main jobs={jobs} deleteJob={deleteJob} />} />
+        <Route path="/alljobs" element={<AllJobs jobs={jobs} deleteJob={deleteJob} />} />
       </Routes>
     </div>
   )

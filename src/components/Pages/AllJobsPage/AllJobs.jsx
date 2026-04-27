@@ -4,7 +4,7 @@ import Button from '../../Button/Button'
 import JobCard from '../../Main/JobCard/JobCard'
 import './AllJobs.css'
 
-const AllJobs = ({ jobs }) => {
+const AllJobs = ({ jobs, deleteJob }) => {
   const [activeFilter, setActiveFilter] = useState('all')
 
   const filters = [
@@ -60,13 +60,15 @@ const AllJobs = ({ jobs }) => {
         <div className="all-jobs__list">
           {filteredJobs.map((job) => (
             <JobCard
-              key={job.id}
+            key={job.id}
+            id={job.id}
               company={job.company}
               position={job.position}
               date={job.date}
               status={job.status}
               statusType={job.statusType}
               img={job.img}
+              deleteJob={deleteJob}
             />
           ))}
         </div>

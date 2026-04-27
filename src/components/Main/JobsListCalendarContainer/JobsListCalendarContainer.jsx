@@ -2,10 +2,10 @@ import CalendarContainer from './CalendarContainer/CalendarContainer'
 import './JobsListCalendarContainer.css'
 import JobsListContainer from "./JobsListContainer/JobsListContainer"
 
-const JobsListCalendarContainer = ({ jobs }) => {
+const JobsListCalendarContainer = ({ jobs, deleteJob}) => {
   return (
     <section className="jobs-list-calendar-container">
-      <JobsListContainer jobs={jobs}/>
+      <JobsListContainer jobs={jobs} deleteJob={deleteJob}/>
       <CalendarContainer/>
     </section>
   )

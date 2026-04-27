@@ -3,12 +3,12 @@ import HeaderSection from './HeaderSection/HeaderSection'
 import JobsListCalendarContainer from './JobsListCalendarContainer/JobsListCalendarContainer'
 import StatisticSection from './StatisticSection/StatisticSection'
 
-const Main = ({ jobs }) => {
+const Main = ({ jobs, deleteJob}) => {
   return (
     <section className='main'>
       <HeaderSection/>
       <StatisticSection jobs={jobs} />
-      <JobsListCalendarContainer jobs={jobs}/>
+      <JobsListCalendarContainer jobs={jobs} deleteJob={deleteJob}/>
     </section>
 
   )

@@ -1,6 +1,6 @@
 import './JobCard.css'
 
-const JobCard = ({ company, position, date, status, statusType = 'applied', img }) => {
+const JobCard = ({ company, position, date, status, statusType = 'applied', img, deleteJob,id}) => {
   return (
     <div className="job-card">
       <div className="job-card__company">
@@ -18,6 +18,9 @@ const JobCard = ({ company, position, date, status, statusType = 'applied', img 
       <span className={`job-card__status job-card__status--${statusType}`}>
         {status}
       </span>
+      <button type='button' className='delete-button' onClick={()=> deleteJob(id)}>
+        Delete
+      </button>
     </div>
   )
 }
