@@ -8,7 +8,7 @@ const JobsListContainer = ({ jobs, deleteJob }) => {
     <section className='jobs-list-container'>
       <div className="jobs-list-container__header">
         <h4>Recent</h4>
-        <Link to='/alljobs'>View All</Link>
+        <Link to='/alljobs'>View All!</Link>
       </div>
       <div className="jobs-list-container__list">
         {jobSlice.map((job)=>(
