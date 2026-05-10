@@ -3,9 +3,11 @@ import AddButton from '../../Button/AddButton'
 import Button from '../../Button/Button'
 import JobCard from '../../Main/JobCard/JobCard'
 import './AllJobs.css'
+import { useJobsStore } from '../../Zustand/useJobsStore'
 
-const AllJobs = ({ jobs, deleteJob }) => {
+const AllJobs = ({ jobs  }) => {
   const [activeFilter, setActiveFilter] = useState('all')
+  const resetJobs = useJobsStore((state)=> state.resetJobs) //Test функия 
 
   const filters = [
     { text: 'All', value: 'all' },
@@ -31,6 +33,7 @@ const AllJobs = ({ jobs, deleteJob }) => {
           <h2>All Jobs</h2>
           <p>Manage your applications in one place.</p>
         </div>
+        <AddButton onClick={resetJobs} text='ResetJobs(Test)'/>
         <AddButton />
       </div>
 
@@ -68,7 +71,6 @@ const AllJobs = ({ jobs, deleteJob }) => {
               status={job.status}
               statusType={job.statusType}
               img={job.img}
-              deleteJob={deleteJob}
             />
           ))}
         </div>

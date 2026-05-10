@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import './StatisticSection.css'
 const StatisticSection = ({ jobs }) => {
   const total = jobs.length

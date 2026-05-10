@@ -2,13 +2,13 @@ import { Link } from 'react-router-dom'
 import JobCard from '../../JobCard/JobCard'
 import './JobsListContainer.css'
 
-const JobsListContainer = ({ jobs, deleteJob }) => {
+const JobsListContainer = ({ jobs }) => {
   const jobSlice = jobs.slice(0, 3)
   return (
     <section className='jobs-list-container'>
       <div className="jobs-list-container__header">
         <h4>Recent</h4>
-        <Link to='/alljobs'>View All!</Link>
+        <Link to='/alljobs'>View All</Link>
       </div>
       <div className="jobs-list-container__list">
         {jobSlice.map((job)=>(
@@ -21,7 +21,6 @@ const JobsListContainer = ({ jobs, deleteJob }) => {
             status={job.status}
             statusType={job.statusType}
             img={job.img}
-            deleteJob={deleteJob}
           />
         )) }
       </div>
