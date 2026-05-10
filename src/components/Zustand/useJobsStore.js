@@ -29,8 +29,6 @@ export const useJobsStore = create(
         ),
       })),
 
-
-
     resetJobs: () => set({ jobs: defaultJobs }),
   }),
     {

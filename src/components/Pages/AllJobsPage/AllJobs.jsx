@@ -7,9 +7,11 @@ import { useJobsStore } from '../../Zustand/useJobsStore'
 
 const AllJobs = ({ jobs  }) => {
   const [activeFilter, setActiveFilter] = useState('all')
+  const [searchValue, setSearchValue] = useState('')
+  
   const resetJobs = useJobsStore((state)=> state.resetJobs) //Test функия 
 
-  const filters = [
+  const filters = [ // Кнопки фильтра 
     { text: 'All', value: 'all' },
     { text: 'Applied', value: 'applied' },
     { text: 'Interview', value: 'interview' },
@@ -18,13 +20,17 @@ const AllJobs = ({ jobs  }) => {
     { text: 'New', value: 'new' },
   ]
 
-  const filteredJobs = jobs.filter((job) => {
-    if (activeFilter === 'all') {
-      return true
-    }
+const filteredJobs = jobs.filter((job) => {
+  const matchesStatus = activeFilter === 'all' || job.statusType === activeFilter
+  //  если выбран all, тогда статус подходит для любой вакансии
+  //  иначе сравниваем статус вакансии с выбранным фильтром
 
-    return job.statusType === activeFilter
-  })
+  const matchesSearch = job.company.toLowerCase().includes(searchValue.toLowerCase()) || job.position.toLowerCase().includes(searchValue.toLowerCase())
+  // поиск по company or position в не зависимости от регитсра  
+
+  return matchesStatus && matchesSearch
+  // возвращает вакансии который подохдят и по статусу и по поиску
+})
 
   return (
     <section className='all-jobs'>
@@ -39,7 +45,7 @@ const AllJobs = ({ jobs  }) => {
 
       <div className="all-jobs__toolbar">
         <div className="all-jobs__search-wrapper">
-          <input type="text" placeholder='Search company or position...' />
+          <input type="text" placeholder='Search company or position...' value={searchValue} onChange={(e)=> setSearchValue(e.target.value)} />
         </div>
         <div className="all-jobs__filters">
           {filters.map((filter) => (
