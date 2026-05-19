@@ -24,7 +24,12 @@ const NavMenu = () => {
               isActive
                 ? "nav-menu__all-jobs nav-menu-link active"
                 : 'nav-menu__all-jobs nav-menu-link'}>All Jobs</NavLink>
-          <a href="/" className="nav-menu__add-job nav-menu-link">Add Job</a>
+          <NavLink
+            to='/addjob'
+            className={({ isActive }) =>
+              isActive
+                ? "nav-menu__add-job nav-menu-link active"
+                : 'nav-menu__add-job nav-menu-link'}>Add Job</NavLink>
         </div>
         <p className="nav-menu__container-title">TRACKING</p>
         <div className="nav-menu__links-container nav-menu__links-container--tracking">

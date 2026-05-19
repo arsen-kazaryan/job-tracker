@@ -1,0 +1,254 @@
+.add-job-page{
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  min-width: 0;
+  padding: 30px 20px;
+}
+
+.add-job-page__header{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.add-job-page__title-wrapper{
+  display: flex;
+  flex-direction: column;
+
+  h1{
+    margin: 4px 0 8px;
+    color: var(--text-primary);
+    font-size: 32px;
+    line-height: 1.1;
+  }
+
+  p{
+    margin: 0;
+    max-width: 560px;
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}
+
+
+
+.add-job-page__back-link{
+  flex-shrink: 0;
+  padding: 12px 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background-color: var(--panel);
+  color: var(--text-primary);
+  font-size: 14px;
+  font-weight: 700;
+  transition: 0.2s ease;
+
+  &:hover{
+    border-color: rgba(40, 233, 140, 0.45);
+    color: var(--accent-green);
+  }
+}
+
+.add-job-page__form{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.add-job-page__grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.add-job-page__panel{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0)),
+    var(--panel);
+}
+
+.add-job-page__panel-header{
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  h2{
+    color: var(--text-primary);
+    font-size: 20px;
+  }
+
+  p{
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 13px;
+  }
+}
+
+.add-job-page__row{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.add-job-page__field{
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  span{
+    color: var(--text-primary);
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  input,
+  select,
+  textarea{
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    background-color: var(--background-color);
+    color: var(--text-primary);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    transition: 0.2s ease;
+
+    &::placeholder{
+      color: var(--text-muted);
+      opacity: 1;
+    }
+
+    &:focus{
+      outline: 1px solid rgba(40, 233, 140, 0.65);
+      border-color: rgba(40, 233, 140, 0.35);
+    }
+  }
+
+  textarea{
+    resize: vertical;
+    min-height: 120px;
+  }
+}
+
+.add-job-page__footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  background-color: var(--panel);
+}
+
+
+.add-job-page__actions{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.add-job-page__secondary-button,
+.add-job-page__primary-button{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 130px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: 0.2s ease;
+}
+
+.add-job-page__secondary-button{
+  border: 1px solid var(--border-color);
+  background-color: transparent;
+  color: var(--text-primary);
+
+  &:hover{
+    border-color: rgba(255,255,255,0.18);
+    color: var(--accent-green);
+  }
+}
+
+.add-job-page__primary-button{
+  border: none;
+  background-color: var(--accent-green);
+  color: var(--background-color);
+  cursor: pointer;
+
+  &:hover{
+    background-color: rgb(121, 246, 102);
+  }
+}
+
+@media (max-width: 900px) {
+  .add-job-page{
+    padding-top: 68px;
+    padding-bottom: 80px;
+  }
+
+  .add-job-page__grid{
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .add-job-page{
+    gap: 18px;
+  }
+
+  .add-job-page__header{
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .add-job-page__title-wrapper{
+    h1{
+      font-size: 26px;
+    }
+  }
+
+  .add-job-page__row{
+    grid-template-columns: 1fr;
+  }
+
+  .add-job-page__panel,
+  .add-job-page__footer{
+    padding: 16px;
+  }
+
+  .add-job-page__footer{
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .add-job-page__actions{
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .add-job-page__secondary-button,
+  .add-job-page__primary-button{
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .add-job-page{
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}

@@ -4,12 +4,19 @@ import Button from '../../Button/Button'
 import JobCard from '../../Main/JobCard/JobCard'
 import './AllJobs.css'
 import { useJobsStore } from '../../Zustand/useJobsStore'
+import { useSearchParams } from 'react-router-dom'
 
-const AllJobs = ({ jobs  }) => {
+const AllJobs = ({ jobs }) => {
   const [activeFilter, setActiveFilter] = useState('all')
-  const [searchValue, setSearchValue] = useState('')
-  
-  const resetJobs = useJobsStore((state)=> state.resetJobs) //Test функия 
+  const [searchParams, setSearchParams] = useSearchParams()
+
+  const searchValue = searchParams.get('search') || ''; // ,берем текст (из ?search=...)если там пусто то '' [аналог стейт]
+
+  const handleInputChange = (e) => {
+    setSearchParams({ search: e.target.value })// обновляет URL и ставит  в search  То что я ввел    
+  }
+
+  const resetJobs = useJobsStore((state) => state.resetJobs) //Test функия 
 
   const filters = [ // Кнопки фильтра 
     { text: 'All', value: 'all' },
@@ -20,17 +27,17 @@ const AllJobs = ({ jobs  }) => {
     { text: 'New', value: 'new' },
   ]
 
-const filteredJobs = jobs.filter((job) => {
-  const matchesStatus = activeFilter === 'all' || job.statusType === activeFilter
-  //  если выбран all, тогда статус подходит для любой вакансии
-  //  иначе сравниваем статус вакансии с выбранным фильтром
+  const filteredJobs = jobs.filter((job) => {
+    const matchesStatus = activeFilter === 'all' || job.statusType === activeFilter
+    //  если выбран all, тогда статус подходит для любой вакансии
+    //  иначе сравниваем статус вакансии с выбранным фильтром
 
-  const matchesSearch = job.company.toLowerCase().includes(searchValue.toLowerCase()) || job.position.toLowerCase().includes(searchValue.toLowerCase())
-  // поиск по company or position в не зависимости от регитсра  
+    const matchesSearch = job.company.toLowerCase().includes(searchValue.toLowerCase().trim()) || job.position.trim().toLowerCase().includes(searchValue.toLowerCase().trim())
+    // поиск по company or position в не зависимости от регитсра  
 
-  return matchesStatus && matchesSearch
-  // возвращает вакансии который подохдят и по статусу и по поиску
-})
+    return matchesStatus && matchesSearch
+    // возвращает вакансии который подохдят и по статусу и по поиску
+  })
 
   return (
     <section className='all-jobs'>
@@ -39,13 +46,13 @@ const filteredJobs = jobs.filter((job) => {
           <h2>All Jobs</h2>
           <p>Manage your applications in one place.</p>
         </div>
-        <AddButton onClick={resetJobs} text='ResetJobs(Test)'/>
+        <AddButton onClick={resetJobs} text='ResetJobs(Test)' />
         <AddButton />
       </div>
 
       <div className="all-jobs__toolbar">
         <div className="all-jobs__search-wrapper">
-          <input type="text" placeholder='Search company or position...' value={searchValue} onChange={(e)=> setSearchValue(e.target.value)} />
+          <input type="text" placeholder='Search company or position...' value={searchValue} onChange={handleInputChange} />
         </div>
         <div className="all-jobs__filters">
           {filters.map((filter) => (
@@ -69,8 +76,8 @@ const filteredJobs = jobs.filter((job) => {
         <div className="all-jobs__list">
           {filteredJobs.map((job) => (
             <JobCard
-            key={job.id}
-            id={job.id}
+              key={job.id}
+              id={job.id}
               company={job.company}
               position={job.position}
               date={job.date}

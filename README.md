@@ -36,8 +36,4 @@
 - Vite
 - ESLint
 
-## Как запустить проект
-
-```bash
-npm install
-npm run dev
+[Demo](https://job-tracker-three-gilt.vercel.app/)
