@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import './AddJob.css'
 import { useJobsStore } from '../../Zustand/useJobsStore'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 
 const convertToBase64 = (file) => {
   return new Promise((resolve, reject) => {
@@ -19,10 +19,16 @@ const convertToBase64 = (file) => {
 const AddJob = () => {
   const navigate = useNavigate() // для кнопки back 
   const addJob = useJobsStore((state) => state.addJob)
+  const [uploadFileCheck, setUploadFileCheck] = useState(false)
 
   const formRef = useRef(null) // будем работать через неконтролирумые данные 
 
 
+  const hanldeFileChange = (e)=> {
+    const file = e.target.files[0]
+    // !!file превращает наличие файла в true, а его отсутствие (undefined) в false
+    setUploadFileCheck(!!file);
+  }
   const handleSubmit = async (e) => {
     e.preventDefault()
     const formElement = formRef.current
@@ -37,8 +43,8 @@ const AddJob = () => {
     const image = formElement.image.files[0]
 
     let imageBase64 = ''
-    if (image) {
-       imageBase64 = await convertToBase64(image)
+    if (image) {                                  //для корректного отображения Image
+      imageBase64 = await convertToBase64(image)
     }
 
     const newJob = {
@@ -91,7 +97,7 @@ const AddJob = () => {
               <input name='position' type="text" placeholder="Frontend Intern" required />
             </div>
 
-            <div className="add-job-page__row" >
+            <div className="add-job-page__row">
               <div className="add-job-page__field">
                 <span>Date Applied</span>
                 <input type="date" name="dateApplied" required />
@@ -107,8 +113,11 @@ const AddJob = () => {
                   <option value="rejected">Rejected</option>
                 </select>
               </div>
-              <input type="file" name='image' accept='image/*' />
             </div>
+              <div className="add-job-page__upload">
+                <input type="file"  id='upload-photo' name='image' accept='image/*' style={{display:'none'}} onChange={hanldeFileChange} />
+                <label htmlFor="upload-photo" className='upload-photo-label'>Upload Photo: {uploadFileCheck ? 'Selected' : 'Not  Chosen' }</label>
+              </div>
           </section>
 
           <section className="add-job-page__panel" >
