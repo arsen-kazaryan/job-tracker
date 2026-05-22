@@ -1,14 +1,20 @@
+import { useNavigate } from 'react-router-dom'
 import { useJobsStore } from '../../Zustand/useJobsStore'
 import './JobCard.css'
 
 
-const JobCard = ({ company, position, date, status, statusType = 'applied', img, id}) => {
+const JobCard = ({ company, position, date, status, statusType = 'applied', img, id }) => {
+  const navigate = useNavigate()
 
-  const {deleteJob,changeJobStatus}= useJobsStore()
+  const handleCardClick = () => {
+    // Для перехода на страницк по ее id 
+    navigate(`/job/${id}`);
+  };
+  const { deleteJob, changeJobStatus } = useJobsStore()
 
-  const firstChar = company ? company.charAt(0).toUpperCase() : '?' 
+  const firstChar = company ? company.charAt(0).toUpperCase() : '?'
   return (
-    <div className="job-card">
+    <div className="job-card"  onClick={handleCardClick}>
       <div className="job-card__company">
         <div className="job-card__img-wrapper">
           {img ? (
@@ -27,10 +33,10 @@ const JobCard = ({ company, position, date, status, statusType = 'applied', img,
       <div className="job-card__job-date">
         {date}
       </div>
-      <span className={`job-card__status job-card__status--${statusType}`} onClick={()=> changeJobStatus(id)}>
+      <span className={`job-card__status job-card__status--${statusType}`} onClick={() => changeJobStatus(id)}>
         {status}
       </span>
-      <button type='button' className='delete-button' onClick={()=> deleteJob(id)}>
+      <button type='button' className='delete-button' onClick={() => deleteJob(id)}>
         Delete
       </button>
     </div>
