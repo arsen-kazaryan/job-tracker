@@ -11,7 +11,6 @@ const JobCard = ({ company, position, date, status, statusType = 'applied', img,
     navigate(`/job/${id}`);
   };
   const { deleteJob, changeJobStatus } = useJobsStore()
-
   const firstChar = company ? company.charAt(0).toUpperCase() : '?'
   return (
     <div className="job-card"  onClick={handleCardClick}>
@@ -33,15 +32,16 @@ const JobCard = ({ company, position, date, status, statusType = 'applied', img,
       <div className="job-card__job-date">
         {date}
       </div>
-      <span className={`job-card__status job-card__status--${statusType}`} onClick={() => changeJobStatus(id)}>
+      <span className={`job-card__status job-card__status--${statusType}`} onClick={(e) => {e.stopPropagation(); changeJobStatus(id)}}>
         {status}
       </span>
-      <button type='button' className='delete-button' onClick={() => deleteJob(id)}>
+      <button type='button' className='delete-button' onClick={(e) => {e.stopPropagation(); deleteJob(id)}}>
         Delete
       </button>
     </div>
   )
 }
+// Добавил stopPropagation чтобы избеажть всплытия(лишних переходов на страницу вакансии)
 
 export default JobCard
 
