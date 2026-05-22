@@ -1,0 +1,10 @@
+.job-card-page{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  text-align: center;
+  gap: 10px;
+}
