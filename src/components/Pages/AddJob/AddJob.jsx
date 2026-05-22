@@ -1,9 +1,68 @@
 import { Link, useNavigate } from 'react-router-dom'
 import './AddJob.css'
+import { useJobsStore } from '../../Zustand/useJobsStore'
+import { useRef } from 'react'
+
+const convertToBase64 = (file) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader() // создаем reader для файла
+
+    reader.readAsDataURL(file) // читаем файл как base64
+
+    reader.onload = () => resolve(reader.result) // когда загрузилось — отдаем результат
+
+    reader.onerror = (error) => reject(error) // если ошибка
+  })
+}
+
 
 const AddJob = () => {
   const navigate = useNavigate() // для кнопки back 
-  
+  const addJob = useJobsStore((state) => state.addJob)
+
+  const formRef = useRef(null) // будем работать через неконтролирумые данные 
+
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    const formElement = formRef.current
+    if (!formElement) return
+
+
+    const company = formElement.company.value
+    const position = formElement.position.value
+    const dateApplied = formElement.dateApplied.value    // берем данные напрямую  через name
+    const statusType = formElement.status.value
+    const status = statusType[0].toUpperCase() + statusType.slice(1)
+    const image = formElement.image.files[0]
+
+    let imageBase64 = ''
+    if (image) {
+       imageBase64 = await convertToBase64(image)
+    }
+
+    const newJob = {
+      id: Date.now(),
+      company,
+      position,
+      date: dateApplied,
+      status,
+      statusType,
+
+      link: formElement.link.value,
+      location: formElement.location.value,
+      salary: formElement.salary.value,             // link и ниже могут не быть 
+      contact: formElement.contact.value,
+      notes: formElement.notes.value,
+
+      img: imageBase64,
+    }
+
+    addJob(newJob)
+
+    navigate(-1)
+  }
+
   return (
     <section className="add-job-page">
       <div className="add-job-page__header">
@@ -11,10 +70,10 @@ const AddJob = () => {
           <h1>Add Job</h1>
           <p>Create a new record for your job application.</p>
         </div>
-        <Link onClick={()=> navigate(-1)} className="add-job-page__back-link">Back</Link>
+        <button onClick={() => navigate(-1)} className="add-job-page__back-link">Back</button>
       </div>
 
-      <form className="add-job-page__form" >
+      <form className="add-job-page__form" onSubmit={handleSubmit} ref={formRef}>
         <div className="add-job-page__grid" >
           <section className="add-job-page__panel" >
             <div className="add-job-page__panel-header" >
@@ -24,23 +83,23 @@ const AddJob = () => {
 
             <div className="add-job-page__field" >
               <span>Company Name</span>
-              <input type="text" placeholder="Microsoft" />
+              <input name="company" type="text" placeholder="Microsoft" required />
             </div>
 
             <div className="add-job-page__field">
               <span>Position</span>
-              <input type="text" placeholder="Frontend Intern" />
+              <input name='position' type="text" placeholder="Frontend Intern" required />
             </div>
 
             <div className="add-job-page__row" >
               <div className="add-job-page__field">
                 <span>Date Applied</span>
-                <input type="date" onChange={(e)=> console.log(e.target.value) }/>
+                <input type="date" name="dateApplied" required />
               </div>
 
               <div className="add-job-page__field">
                 <span>Status</span>
-                <select defaultValue="new" onChange={(e)=> console.log(e.target.value)}>
+                <select defaultValue="new" name='status' >
                   <option value="new">New</option>
                   <option value="applied">Applied</option>
                   <option value="waiting">Waiting</option>
@@ -48,6 +107,7 @@ const AddJob = () => {
                   <option value="rejected">Rejected</option>
                 </select>
               </div>
+              <input type="file" name='image' accept='image/*' />
             </div>
           </section>
 
@@ -59,24 +119,24 @@ const AddJob = () => {
 
             <div className="add-job-page__field">
               <span>Job Link</span>
-              <input type="url" placeholder="https://company.com/jobs/frontend-intern" />
+              <input type="url" name='link' placeholder="https://company.com/jobs/frontend-intern" />
             </div>
 
             <div className="add-job-page__row">
               <div className="add-job-page__field">
                 <span>Location</span>
-                <input type="text" placeholder="Yerevan / Remote" />
+                <input type="text" placeholder="Yerevan / Remote" name='location' />
               </div>
 
               <div className="add-job-page__field">
                 <span>Salary</span>
-                <input type="text" placeholder="$800 - $1200" />
+                <input type="text" placeholder="$800 - $1200" name='salary' />
               </div>
             </div>
 
             <div className="add-job-page__field">
               <span>Contact Person</span>
-              <input type="text" placeholder="Recruiter name" />
+              <input type="text" placeholder="Recruiter name" name='contact' />
             </div>
           </section>
         </div>
@@ -90,6 +150,7 @@ const AddJob = () => {
           <div className="add-job-page__field">
             <span>Notes</span>
             <textarea
+              name='notes'
               rows="6"
               placeholder="Write a short note about the vacancy, your follow-up plan, or why you want this role."
             />
@@ -99,10 +160,10 @@ const AddJob = () => {
         <div className="add-job-page__footer">
 
           <div className="add-job-page__actions">
-            <Link onClick={()=> navigate(-1)} className="add-job-page__secondary-button">
+            <button onClick={() => navigate(-1)} className="add-job-page__secondary-button">
               Cancel
-            </Link>
-            <button type="button" className="add-job-page__primary-button">
+            </button>
+            <button type="submit" className="add-job-page__primary-button">
               Create Job
             </button>
           </div>

@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { jobs as defaultJobs } from '../data/jobCard';
+import { jobs as defaultJobs,} from '../data/jobCard';
 
 
 export const useJobsStore = create(
@@ -11,6 +11,12 @@ export const useJobsStore = create(
       set((state) => ({
         jobs: state.jobs.filter((job) => job.id !== id),
       })),
+
+    addJob: (newJob) => {
+      set((state) => ({
+        jobs: [newJob, ...state.jobs]
+      }))
+    },
 
     changeJobStatus: (id) =>
       set((state) => ({

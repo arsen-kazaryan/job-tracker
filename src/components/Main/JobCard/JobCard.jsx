@@ -6,11 +6,18 @@ const JobCard = ({ company, position, date, status, statusType = 'applied', img,
 
   const {deleteJob,changeJobStatus}= useJobsStore()
 
+  const firstChar = company ? company.charAt(0).toUpperCase() : '?' 
   return (
     <div className="job-card">
       <div className="job-card__company">
         <div className="job-card__img-wrapper">
-          <img src={img} alt={`${company} logo`} />
+          {img ? (
+            <img src={img} alt={`${company} logo`} />
+          ) : (
+            <div className="job-card__fitschar-wrapper">
+              <p>{firstChar}</p>
+            </div>
+          )}
         </div>
         <div className="job-card__job-info">
           <h5>{company}</h5>
@@ -31,3 +38,4 @@ const JobCard = ({ company, position, date, status, statusType = 'applied', img,
 }
 
 export default JobCard
+
