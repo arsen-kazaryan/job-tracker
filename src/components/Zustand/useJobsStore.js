@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
-import { jobs as defaultJobs,} from '../data/jobCard';
+import { jobs as defaultJobs, } from '../data/jobCard';
 
 
 export const useJobsStore = create(
@@ -29,11 +29,14 @@ export const useJobsStore = create(
                 : job.status === 'Waiting'
                   ? { ...job, status: 'Interview', statusType: 'interview' }
                   : job.status === 'Interview'
-                    ? { ...job, status: 'Rejected', statusType: 'rejected' }
-                    : { ...job, status: 'New', statusType: 'new' }
+                    ? { ...job, status: 'Offer', statusType: 'offer' }
+                    : job.status === 'Offer'
+                      ? { ...job, status: 'Rejected', statusType: 'rejected' }
+                      : { ...job, status: 'New', statusType: 'new' }
             : job
         ),
       })),
+
 
     resetJobs: () => set({ jobs: defaultJobs }),
   }),

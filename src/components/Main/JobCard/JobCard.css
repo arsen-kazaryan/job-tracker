@@ -70,16 +70,22 @@
 }
 
 .job-card__status{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   justify-self: end;
   min-width: 84px;
+  height: 35px;
   padding: 7px 10px;
   border-radius: 8px;
   font-size: 12px;
   font-weight: 600;
   text-align: center;
+  user-select: none;
   &:hover{
     cursor: pointer;
   }
+  
 }
 
 .job-card__status--applied{
@@ -103,6 +109,10 @@
 .job-card__status--new{
   color: rgb(0, 217, 0);
   background-color: rgba(0, 128, 0, 0.282);
+}
+.job-card__status--offer{
+  color: rgb(83, 255, 83);
+  background-color: rgba(0, 92, 0, 0.282);
 }
 
 
