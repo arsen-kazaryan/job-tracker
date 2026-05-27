@@ -25,7 +25,6 @@ const JobCardPage = () => {
     salary,
     contact,
     notes,
-    attachments = [],
   } = job // Деструктурирую для удобства. Все кроме id чтобы не конфликтовал с id useParams 
   
   const firstChar = company ? company.charAt(0).toUpperCase() : '?'  // такой же есть в job-card на случай если пользователь не зрагрузит фото
