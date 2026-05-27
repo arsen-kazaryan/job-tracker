@@ -166,10 +166,13 @@ const JobCardPage = () => {
             </div>
           </article>
         </section>
-      </main >
+      </main >  
     </div>
   )
 }
 
 export default JobCardPage
 
+
+
+//В планах на будущее добавить возможность редактировывать вакансии уже после добавления

@@ -33,7 +33,11 @@ const NavMenu = () => {
         </div>
         <p className="nav-menu__container-title">TRACKING</p>
         <div className="nav-menu__links-container nav-menu__links-container--tracking">
-          <a href="/" className="nav-menu__statistics nav-menu-link">Statistics</a>
+          <NavLink to="/statistic" 
+          className={({ isActive }) =>
+              isActive 
+                ?"nav-menu__statistics nav-menu-link active"
+                : 'nav-menu__statistics nav-menu-link'}>Statistics</NavLink>
           <a href="/" className="nav-menu__calendar nav-menu-link">Calendar</a>
         </div>
         <p className="nav-menu__container-title">ACCOUNT</p>
