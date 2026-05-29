@@ -1,10 +1,11 @@
 import { NavLink } from 'react-router-dom'
 import './NavMenu.css'
-import { useProfileStore } from '../Zustand/useProfileStore'
+import { useProfileStore } from '../../Store/useProfileStore'
+import { getFirstChar } from '../../utils/getFirstChar'
 
 const NavMenu = () => {
   const {name, role,avatar}= useProfileStore()
-  const firstChar = name ? name.charAt(0).toUpperCase() : '?'
+  const firstChar = getFirstChar(name)
   return (
     <section className="nav-menu">
       <div className="nav-menu__section">
@@ -56,7 +57,7 @@ const NavMenu = () => {
         <div className="nav-menu__profile-container">
           <div className="nav-menu__profile-img">
             {avatar
-              ? <img   src={avatar} alt="logoProfile" />
+              ? <img  src={avatar} alt="logoProfile" />
               : firstChar
             }
           </div>

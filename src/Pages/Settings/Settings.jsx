@@ -1,7 +1,8 @@
 import './Settings.css'
-import { useProfileStore } from '../../Zustand/useProfileStore'
-import { useJobsStore } from '../../Zustand/useJobsStore'
 import { useEffect, useRef, useState } from 'react'
+import { useJobsStore } from '../../Store/useJobsStore'
+import { useProfileStore } from '../../Store/useProfileStore'
+import { getFirstChar } from '../../utils/getFirstChar'
 
 const SettingsPage = () => {
   const { name, role, avatar, updateProfile, resetProfile } = useProfileStore()
@@ -19,16 +20,12 @@ const SettingsPage = () => {
 
   //Синхронизация локального стейта
   useEffect(() => {
-    setLocalName(name)
-    setLocalRole(role)
-    setLocalAvatar(avatar)
-  }, [name, role,avatar])
+    const currentSaveTimer = saveTimerRef.current
+    const currentResetTimer = resetTimerRef.current
 
-  // Очистка памяти 
-  useEffect(() => {
     return () => {
-      if (saveTimerRef.current) clearTimeout(saveTimerRef.current)
-      if (resetTimerRef.current) clearTimeout(resetTimerRef.current)
+      if (currentSaveTimer) clearTimeout(currentSaveTimer)
+      if (currentResetTimer) clearTimeout(currentResetTimer)
     }
   }, [])
 
@@ -39,7 +36,7 @@ const SettingsPage = () => {
 
     if (saveTimerRef.current) clearTimeout(saveTimerRef.current)
     //saved показывается на секунду
-    setTimeout(() => setSaved(false), 1000)
+    saveTimerRef.current = setTimeout(() => setSaved(false), 1000)
 
   }
 
@@ -53,9 +50,12 @@ const SettingsPage = () => {
     }
   }
 
-  const handleResetProfile = () => {
+    const handleResetProfile = () => {
     if (window.confirm('Do you want to reset name, role and avatar?')) {
       resetProfile()
+      setLocalName('')
+      setLocalRole('')
+      setLocalAvatar(null)
     }
   }
 
@@ -71,11 +71,10 @@ const SettingsPage = () => {
     reader.readAsDataURL(file)
   }
 
-  // Первая буква имени для аватарки, как в job-card
-  const firstChar = localName.trim() ? localName.trim().charAt(0).toUpperCase() : '?'
+  const firstChar = getFirstChar(name)
 
   // Кнопка заблокирована, если поля пустые ИЛИ если данные в инпутах совпадают с данными в сторе
-const isSaveDisabled =
+  const isSaveDisabled =
     localName.trim().length === 0 ||
     localRole.trim().length === 0 ||
     (localName.trim() === name && localRole.trim() === role && localAvatar === avatar); 

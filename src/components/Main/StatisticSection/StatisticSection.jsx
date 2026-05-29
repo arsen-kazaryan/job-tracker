@@ -1,6 +1,8 @@
-import { Link } from 'react-router-dom'
+import { useJobsStore } from '../../../Store/useJobsStore'
 import './StatisticSection.css'
-const StatisticSection = ({ jobs }) => {
+
+const StatisticSection = () => {
+  const jobs = useJobsStore(state => state.jobs)
   const total = jobs.length
   const appliedNum = jobs.filter(job=> job.statusType === 'applied').length
   const interviewNum = jobs.filter(job=> job.statusType === 'interview').length

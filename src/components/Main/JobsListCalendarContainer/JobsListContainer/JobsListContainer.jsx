@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom'
 import JobCard from '../../JobCard/JobCard'
 import './JobsListContainer.css'
+import { useJobsStore } from '../../../../Store/useJobsStore'
 
-const JobsListContainer = ({ jobs }) => {
+const JobsListContainer = () => {
+  const jobs = useJobsStore(state => state.jobs)
   const jobSlice = jobs.slice(0, 3)
   return (
     <section className='jobs-list-container'>

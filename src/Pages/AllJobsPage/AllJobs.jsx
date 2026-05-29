@@ -1,12 +1,13 @@
 import { useState } from 'react'
-import AddButton from '../../Button/AddButton'
-import Button from '../../Button/Button'
-import JobCard from '../../Main/JobCard/JobCard'
+import AddButton from '../../components/Button/AddButton'
+import Button from '../../components/Button/Button'
+import JobCard from '../../components/Main/JobCard/JobCard'
 import './AllJobs.css'
-import { useJobsStore } from '../../Zustand/useJobsStore'
 import { useSearchParams } from 'react-router-dom'
+import { useJobsStore } from '../../Store/useJobsStore'
 
-const AllJobs = ({ jobs }) => {
+const AllJobs = () => {
+  const jobs = useJobsStore(state => state.jobs)
   const [activeFilter, setActiveFilter] = useState('all')
   const [searchParams, setSearchParams] = useSearchParams()
 
@@ -16,7 +17,6 @@ const AllJobs = ({ jobs }) => {
     setSearchParams({ search: e.target.value })// обновляет URL и ставит  в search  То что я ввел    
   }
 
-  const resetJobs = useJobsStore((state) => state.resetJobs) //Test функия 
 
   const filters = [ // Кнопки фильтра 
     { text: 'All', value: 'all' },
@@ -46,7 +46,6 @@ const AllJobs = ({ jobs }) => {
           <h2>All Jobs</h2>
           <p>Manage your applications in one place.</p>
         </div>
-        <AddButton onClick={resetJobs} text='ResetJobs(Test)' />
         <AddButton />
       </div>
 

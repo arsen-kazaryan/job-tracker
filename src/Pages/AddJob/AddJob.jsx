@@ -1,7 +1,7 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import './AddJob.css'
-import { useJobsStore } from '../../Zustand/useJobsStore'
 import { useRef, useState } from 'react'
+import { useJobsStore } from '../../Store/useJobsStore'
 
 const convertToBase64 = (file) => {
   return new Promise((resolve, reject) => {
@@ -45,7 +45,7 @@ const AddJob = () => {
     }
 
     const newJob = {
-      id: Date.now(),
+      id: crypto.randomUUID(), // инструмент который выдает  случайную и уникальную строку идентификатор 
       company,
       position,
       date: dateApplied,
@@ -73,7 +73,7 @@ const AddJob = () => {
           <h1>Add Job</h1>
           <p>Create a new record for your job application.</p>
         </div>
-        <button onClick={(e) => {navigate(-1)}} className="add-job-page__back-link">Back</button>
+        <button onClick={() => {navigate(-1)}} className="add-job-page__back-link">Back</button>
       </div>
 
       <form className="add-job-page__form" onSubmit={handleSubmit} ref={formRef}>
@@ -166,7 +166,7 @@ const AddJob = () => {
         <div className="add-job-page__footer">
 
           <div className="add-job-page__actions">
-            <button onClick={() => navigate(-1)} type='button' lassName="add-job-page__secondary-button">
+            <button onClick={() => navigate(-1)} type='button' className="add-job-page__secondary-button">
               Cancel
             </button>
             <button type="submit" className="add-job-page__primary-button">

@@ -1,6 +1,7 @@
 import './JobCardPage.css'
 import { useNavigate, useParams } from 'react-router-dom';
-import { useJobsStore } from '../../Zustand/useJobsStore';
+import { useJobsStore } from '../../Store/useJobsStore';
+import { getFirstChar } from '../../utils/getFirstChar';
 
 const JobCardPage = () => {
   const { id } = useParams(); // возвращает строку 
@@ -8,7 +9,7 @@ const JobCardPage = () => {
   
   const changeJobStatus = useJobsStore(state=> state.changeJobStatus)
 
-  const job = useJobsStore(state => state.jobs.find(e => Number(e.id) === Number(id))); 
+  const job = useJobsStore(state => state.jobs.find(job => Number(job.id) === Number(id))); 
   //  сразу из всех jobs ищем нам пододящий через метод find чтобы он нам возвращал объект вместо массива 
 
   if(!job) return <h1>Job not defined...</h1>
@@ -27,7 +28,7 @@ const JobCardPage = () => {
     notes,
   } = job // Деструктурирую для удобства. Все кроме id чтобы не конфликтовал с id useParams 
   
-  const firstChar = company ? company.charAt(0).toUpperCase() : '?'  // такой же есть в job-card на случай если пользователь не зрагрузит фото
+  const firstChar = getFirstChar(company)
 
 
   const steps = ['New', 'Applied', 'Waiting', 'Interview', 'Offer', 'Rejected']
@@ -53,12 +54,13 @@ const JobCardPage = () => {
             <div className="job-card-page__content" >
               <div className='job-card-page__title-and-status-wrapper'>
                 <h1>{position}</h1>
-                <span
+                <button
+                  type='button'
                   className={`job-card__status job-card__status--${statusType}`}
                   onClick={() => changeJobStatus(job.id)}>
                   {/* стили оставляю с job-card и импортирую метод смены класса */}
                   {status}
-                </span>
+                </button>
               </div>
               <div className="job-card-page__title-info" >
                 <p>

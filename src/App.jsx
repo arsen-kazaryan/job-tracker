@@ -1,31 +1,27 @@
 
 import './App.css'
-import Main from './components/Main/Main'
 import { Route, Routes } from 'react-router-dom'
+import Main from './components/Main/Main'
+import AddJob from './Pages/AddJob/AddJob'
+import AllJobs from './Pages/AllJobsPage/AllJobs'
+import JobCardPage from './Pages/JobCardPage/JobCardPage'
+import SettingsPage from './Pages/Settings/Settings'
+import StatisticsPage from './Pages/StatisticsPage/StatisticsPage'
 import NavMenu from './components/NavMenu/NavMenu'
-import AllJobs from './components/Pages/AllJobsPage/AllJobs'
-import { useJobsStore } from './components/Zustand/useJobsStore'
-import AddJob from './components/Pages/AddJob/AddJob.jsx'
-import JobCardPage from './components/Pages/JobCardPage/JobCardPage.jsx'
-import StatisticsPage from './components/Pages/StatisticsPage/StatisticsPage.jsx'
-import Settings from './components/Pages/Settings/Settings.jsx'
 
 
 function App() {
-const jobs = useJobsStore((state)=> state.jobs)
-
-
 
   return (
     <div className='app'>
-      <NavMenu />
+      <NavMenu/>
       <Routes >
-        <Route index element={<Main jobs={jobs}  />} />
-        <Route path="/alljobs" element={<AllJobs jobs={jobs}  />} />
+        <Route index element={<Main/>} />
+        <Route path="/alljobs" element={<AllJobs  />} />
         <Route path="/addjob" element={<AddJob />} />
         <Route path="/job/:id" element={<JobCardPage />} />
         <Route path="/statistic" element={<StatisticsPage />} />
-        <Route path="/settings" element={<Settings />} />
+        <Route path="/settings" element={<SettingsPage />} />
       </Routes>
     </div>
   )

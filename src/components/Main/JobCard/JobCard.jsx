@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom'
-import { useJobsStore } from '../../Zustand/useJobsStore'
+import { useJobsStore } from '../../../Store/useJobsStore'
 import './JobCard.css'
+import { getFirstChar } from '../../../utils/getFirstChar'
 
 
 const JobCard = ({ company, position, date, status, statusType = 'applied', img, id }) => {
@@ -11,7 +12,7 @@ const JobCard = ({ company, position, date, status, statusType = 'applied', img,
     navigate(`/job/${id}`);
   };
   const { deleteJob, changeJobStatus } = useJobsStore()
-  const firstChar = company ? company.charAt(0).toUpperCase() : '?'
+  const firstChar = getFirstChar(company)
   return (
     <div className="job-card"  onClick={handleCardClick}>
       <div className="job-card__company">
@@ -32,9 +33,9 @@ const JobCard = ({ company, position, date, status, statusType = 'applied', img,
       <div className="job-card__job-date">
         {date}
       </div>
-      <span className={`job-card__status job-card__status--${statusType}`} onClick={(e) => {e.stopPropagation(); changeJobStatus(id)}}>
+      <button type='button' className={`job-card__status job-card__status--${statusType}`} onClick={(e) => {e.stopPropagation(); changeJobStatus(id)}}>
         {status}
-      </span>
+      </button>
       <button type='button' className='delete-button' onClick={(e) => {e.stopPropagation(); deleteJob(id)}}>
         Delete
       </button>
