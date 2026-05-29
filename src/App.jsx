@@ -8,6 +8,7 @@ import { useJobsStore } from './components/Zustand/useJobsStore'
 import AddJob from './components/Pages/AddJob/AddJob.jsx'
 import JobCardPage from './components/Pages/JobCardPage/JobCardPage.jsx'
 import StatisticsPage from './components/Pages/StatisticsPage/StatisticsPage.jsx'
+import Settings from './components/Pages/Settings/Settings.jsx'
 
 
 function App() {
@@ -24,6 +25,7 @@ const jobs = useJobsStore((state)=> state.jobs)
         <Route path="/addjob" element={<AddJob />} />
         <Route path="/job/:id" element={<JobCardPage />} />
         <Route path="/statistic" element={<StatisticsPage />} />
+        <Route path="/settings" element={<Settings />} />
       </Routes>
     </div>
   )

@@ -1,7 +1,10 @@
 import { NavLink } from 'react-router-dom'
 import './NavMenu.css'
+import { useProfileStore } from '../Zustand/useProfileStore'
 
 const NavMenu = () => {
+  const {name, role,avatar}= useProfileStore()
+  const firstChar = name ? name.charAt(0).toUpperCase() : '?'
   return (
     <section className="nav-menu">
       <div className="nav-menu__section">
@@ -42,17 +45,24 @@ const NavMenu = () => {
         </div>
         <p className="nav-menu__container-title">ACCOUNT</p>
         <div className="nav-menu__links-container nav-menu__links-container--account">
-          <a href="/" className="nav-menu__settings nav-menu-link">Settings</a>
+          <NavLink to="/settings" 
+          className={({ isActive }) =>
+              isActive 
+                ?"nav-menu__settings nav-menu-link active"
+                : 'nav-menu__settings nav-menu-link'}>Settings</NavLink>
           <a href="/" className="nav-menu__help nav-menu-link">Help & About</a>
         </div>
 
         <div className="nav-menu__profile-container">
           <div className="nav-menu__profile-img">
-            <img src='/favicon.svg' alt="logoProfile" />
+            {avatar
+              ? <img   src={avatar} alt="logoProfile" />
+              : firstChar
+            }
           </div>
           <div className="nav-menu__profile-desc">
-            <p className="nav-menu__profile-name">Aram N.</p>
-            <p className="nav-menu__profile-p">Junior Developer</p>
+            <p className="nav-menu__profile-name">{name}</p>
+            <p className="nav-menu__profile-p">{role}</p>
           </div>
         </div>
       </div>

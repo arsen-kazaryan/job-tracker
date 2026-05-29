@@ -6,11 +6,8 @@ import { useRef, useState } from 'react'
 const convertToBase64 = (file) => {
   return new Promise((resolve, reject) => {
     const reader = new FileReader() // создаем reader для файла
-
     reader.readAsDataURL(file) // читаем файл как base64
-
     reader.onload = () => resolve(reader.result) // когда загрузилось — отдаем результат
-
     reader.onerror = (error) => reject(error) // если ошибка
   })
 }
@@ -76,7 +73,7 @@ const AddJob = () => {
           <h1>Add Job</h1>
           <p>Create a new record for your job application.</p>
         </div>
-        <button onClick={() => navigate(-1)} className="add-job-page__back-link">Back</button>
+        <button onClick={(e) => {navigate(-1)}} className="add-job-page__back-link">Back</button>
       </div>
 
       <form className="add-job-page__form" onSubmit={handleSubmit} ref={formRef}>
@@ -169,7 +166,7 @@ const AddJob = () => {
         <div className="add-job-page__footer">
 
           <div className="add-job-page__actions">
-            <button onClick={() => navigate(-1)} className="add-job-page__secondary-button">
+            <button onClick={() => navigate(-1)} type='button' lassName="add-job-page__secondary-button">
               Cancel
             </button>
             <button type="submit" className="add-job-page__primary-button">
