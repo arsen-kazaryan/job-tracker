@@ -198,35 +198,6 @@
   color: var(--text-muted);
 }
 
-/* О приложении */
-.settings-page__about {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.settings-page__about-row {
-  display: flex;
-  justify-content: space-between;
-  font-size: 14px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--border-color);
-}
-
-.settings-page__about-row:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.settings-page__about-row span:first-child {
-  color: var(--text-muted);
-}
-
-.settings-page__about-row span:last-child {
-  color: var(--text-primary);
-  font-weight: 500;
-}
-
 /* Адаптив */
 @media (max-width: 560px) {
   .settings-page {
