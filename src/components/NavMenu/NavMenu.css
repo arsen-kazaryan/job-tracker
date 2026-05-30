@@ -284,6 +284,7 @@
   }
   .nav-menu__links-container--main,
   .nav-menu__links-container--tracking {
+    z-index: 1000;
     display: flex;
     position: fixed;
     bottom: 0;

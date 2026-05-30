@@ -2,15 +2,8 @@ import { useNavigate } from 'react-router-dom'
 import './AddJob.css'
 import { useRef, useState } from 'react'
 import { useJobsStore } from '../../Store/useJobsStore'
+import { convertToBase64 } from '../../utils/convertToBase64'
 
-const convertToBase64 = (file) => {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader() // создаем reader для файла
-    reader.readAsDataURL(file) // читаем файл как base64
-    reader.onload = () => resolve(reader.result) // когда загрузилось — отдаем результат
-    reader.onerror = (error) => reject(error) // если ошибка
-  })
-}
 
 
 const AddJob = () => {

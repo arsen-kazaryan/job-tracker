@@ -5,7 +5,7 @@ import { useJobsStore } from '../../../../Store/useJobsStore'
 
 const JobsListContainer = () => {
   const jobs = useJobsStore(state => state.jobs)
-  const jobSlice = jobs.slice(0, 3)
+  const jobSlice = [...jobs].sort((a,b)=> new Date(b.date)- new Date(a.date)).slice(0, 3)
   return (
     <section className='jobs-list-container'>
       <div className="jobs-list-container__header">

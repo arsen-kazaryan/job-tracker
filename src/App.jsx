@@ -8,6 +8,7 @@ import JobCardPage from './Pages/JobCardPage/JobCardPage'
 import SettingsPage from './Pages/Settings/Settings'
 import StatisticsPage from './Pages/StatisticsPage/StatisticsPage'
 import NavMenu from './components/NavMenu/NavMenu'
+import NotFoundPage from './Pages/NotFoundPage/NotFoundPage'
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         <Route path="/job/:id" element={<JobCardPage />} />
         <Route path="/statistic" element={<StatisticsPage />} />
         <Route path="/settings" element={<SettingsPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
   )

@@ -50,7 +50,7 @@ const SettingsPage = () => {
     }
   }
 
-    const handleResetProfile = () => {
+  const handleResetProfile = () => {
     if (window.confirm('Do you want to reset name, role and avatar?')) {
       resetProfile()
       setLocalName('')
@@ -77,8 +77,7 @@ const SettingsPage = () => {
   const isSaveDisabled =
     localName.trim().length === 0 ||
     localRole.trim().length === 0 ||
-    (localName.trim() === name && localRole.trim() === role && localAvatar === avatar); 
-
+    (localName.trim() === name && localRole.trim() === role && localAvatar === avatar);
 
   return (
     <div className="settings-page" >
@@ -89,66 +88,64 @@ const SettingsPage = () => {
       </header>
 
       <article className="settings-page__card">
-        <h2 className="settings-page__card-title">Profile</h2>
-        <p className="settings-page__card-desc">Your name and role shown in the sidebar.</p>
+        <form onSubmit={handleSave}>
+          <h2 className="settings-page__card-title">Profile</h2>
+          <p className="settings-page__card-desc">Your name and role shown in the sidebar.</p>
 
-        <div className="settings-page__profile">
-          <label className="settings-page__avatar" htmlFor="avatar-upload">
-            {localAvatar
-              ? <img src={localAvatar} alt="avatar" />
-              : firstChar
-            }
-            <div className="settings-page__avatar-overlay">
-              <span>Edit</span>
+          <div className="settings-page__profile">
+            <label className="settings-page__avatar" htmlFor="avatar-upload">
+              {localAvatar
+                ? <img src={localAvatar} alt="avatar" />
+                : firstChar
+              }
+              <div className="settings-page__avatar-overlay">
+                <span>Edit</span>
+              </div>
+            </label>
+            <input
+              id="avatar-upload"
+              type="file"
+              accept="image/*"
+              onChange={handleAvatarChange}
+              style={{ display: 'none' }}/>
+              
+            <div className="settings-page__fields" >
+              <div className="settings-page__field">
+                <label className="settings-page__label" htmlFor="name">Name</label>
+                <input
+                  id="name"
+                  className="settings-page__input"
+                  type="text"
+                  value={localName}
+                  onChange={e => setLocalName(e.target.value)}
+                  placeholder="Your name..."
+                />
+              </div>
+              <div className="settings-page__field">
+                <label className="settings-page__label" htmlFor="role">Role</label>
+                <input
+                  id="role"
+                  className="settings-page__input"
+                  type="text"
+                  value={localRole}
+                  onChange={e => setLocalRole(e.target.value)}
+                  placeholder="Junior Developer"
+                />
+              </div>
             </div>
-          </label>
-          <input
-            id="avatar-upload"
-            type="file"
-            accept="image/*"
-            onChange={handleAvatarChange}
-            style={{ display: 'none' }}
-          />
-
-          <div className="settings-page__fields" >
-            <div className="settings-page__field">
-              <label className="settings-page__label" htmlFor="name">Name</label>
-              <input
-                id="name"
-                className="settings-page__input"
-                type="text"
-                value={localName}
-                onChange={e => setLocalName(e.target.value)}
-                placeholder="Your name..."
-              />
-            </div>
-            <div className="settings-page__field">
-              <label className="settings-page__label" htmlFor="role">Role</label>
-              <input
-                id="role"
-                className="settings-page__input"
-                type="text"
-                value={localRole}
-                onChange={e => setLocalRole(e.target.value)}
-                placeholder="Junior Developer"
-              />
-            </div>
-
-
           </div>
-        </div>
-
-        <div className="settings-page__actions">
-          <button onClick={handleResetProfile} type='button' className='settings-page__btn settings-page__btn--danger'>
-            Reset Profile
-          </button>
-          <button
-            className="settings-page__btn settings-page__btn--primary"
-            onClick={handleSave}
-            disabled={isSaveDisabled}>
-            {saved ? 'Saved!' : 'Save Changes'}
-          </button>
-        </div>
+          <div className="settings-page__actions">
+            <button onClick={handleResetProfile} type='button' className='settings-page__btn settings-page__btn--danger'>
+              Reset Profile
+            </button>
+            <button
+              type='submit'
+              className="settings-page__btn settings-page__btn--primary"
+              disabled={isSaveDisabled}>
+              {saved ? 'Saved!' : 'Save Changes'}
+            </button>
+          </div>
+        </form>
       </article>
 
       <article className="settings-page__card">
