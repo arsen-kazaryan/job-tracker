@@ -2,6 +2,7 @@ import './JobCardPage.css'
 import { useNavigate, useParams } from 'react-router-dom';
 import { useJobsStore } from '../../Store/useJobsStore';
 import { getFirstChar } from '../../utils/getFirstChar';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 const JobCardPage = () => {
   const { id } = useParams(); // возвращает строку 
@@ -9,10 +10,10 @@ const JobCardPage = () => {
   
   const changeJobStatus = useJobsStore(state=> state.changeJobStatus)
 
-  const job = useJobsStore(state => state.jobs.find(job => Number(job.id) === Number(id))); 
+const job = useJobsStore(state => state.jobs.find(job => +job.id === +id));
   //  сразу из всех jobs ищем нам пододящий через метод find чтобы он нам возвращал объект вместо массива 
 
-  if(!job) return <h1>Job not defined...</h1>
+  if(!job) return <NotFoundPage props={'JOB CARD NOT DEFINED'} />
 
   const {
     company,

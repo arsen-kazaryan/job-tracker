@@ -6,5 +6,7 @@
 @media (max-width: 900px) {
   .app{
     flex-direction: column;
+    padding-top: 44px;    
+    padding-bottom: 54px;
   }
 }

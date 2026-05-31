@@ -34,8 +34,7 @@
 
   input{
     flex: 1 1 auto;
-    min-width: 0;
-    width: 100%;
+    width: 90%;
     padding: 10px 10px;
     border-radius: 5px;
     border: 1px solid var(--border-color);
@@ -70,9 +69,8 @@
 }
 
 .header-section__btn-search{
-  flex-shrink: 0;
-  white-space: nowrap;
   border: none;
+  flex-wrap: nowrap;
   padding: 10px 14px;
   border-radius: 10px;
   background-color: var(--accent-green);
@@ -141,7 +139,6 @@
   }
   .header-section__btn-search {
     width: 100%;
-    padding: 14px 12px;
   }
 }
 

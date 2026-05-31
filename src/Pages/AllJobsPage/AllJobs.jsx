@@ -32,7 +32,11 @@ const AllJobs = () => {
     //  если выбран all, тогда статус подходит для любой вакансии
     //  иначе сравниваем статус вакансии с выбранным фильтром
 
-    const matchesSearch = job.company.toLowerCase().includes(searchValue.toLowerCase().trim()) || job.position.trim().toLowerCase().includes(searchValue.toLowerCase().trim())
+
+    const query = searchValue.toLowerCase().trim()
+    const matchesSearch =
+      job.company.toLowerCase().includes(query) ||
+      job.position.toLowerCase().includes(query)
     // поиск по company or position в не зависимости от регитсра  
 
     return matchesStatus && matchesSearch

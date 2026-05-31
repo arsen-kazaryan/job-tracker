@@ -8,11 +8,10 @@
   border: 2px solid var(--border-color);
   height: 100vh;
 }
-.app{
+.app {
   display: flex;
-  
 }
-.active{
+.active {
   color: var(--accent-green);
   background-color: #071C1A;
 }
@@ -44,7 +43,7 @@
   margin-top: 10px;
 }
 
-.nav-menu__mobile-button{
+.nav-menu__mobile-button {
   display: none;
 }
 
@@ -97,8 +96,7 @@
   justify-content: center;
   align-items: center;
   background-color: var(--background-color);
-  border: 1px solid gray ;
-  
+  border: 1px solid gray;
 
   img {
     object-fit: cover;
@@ -141,28 +139,18 @@
 }
 
 .nav-menu__all-jobs::before {
-  background-image: url("/icons/calendar-icon.svg")
+  background-image: url("/icons/bag-icon.svg");
 }
 
 .nav-menu__add-job::before {
   background-image: url("/icons/plus-icon.svg");
 }
 
-.nav-menu__statistics::before {
-  background-image: url("/icons/statistics-icon.svg");
-
-}
-
-.nav-menu__calendar::before {
-  background-image: url("/icons/calendar-icon.svg");
-}
-
 .nav-menu__settings::before {
   background-image: url("/icons/settings-icon.svg");
-
 }
 
-.nav-menu__help::before {
+.nav-menu__about::before {
   background-image: url("/icons/help-icon.svg");
 }
 
@@ -196,7 +184,7 @@
     background: transparent;
   }
 
-  .nav-menu__section{
+  .nav-menu__section {
     height: auto;
     display: block;
   }
@@ -217,7 +205,7 @@
     z-index: 20;
   }
 
-  .nav-menu__mobile-button{
+  .nav-menu__mobile-button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -227,19 +215,6 @@
     border: none;
     background-color: transparent;
     cursor: pointer;
-  }
-
-  .nav-menu__mobile-button--menu{
-    position: relative;
-
-    &::before{
-      content: "";
-      width: 16px;
-      height: 2px;
-      border-radius: 2px;
-      background-color: var(--text-primary);
-      box-shadow: 0 5px 0 var(--text-primary), 0 -5px 0 var(--text-primary);
-    }
   }
 
   .nav-menu__mobile-button--notification {
@@ -257,7 +232,7 @@
       border-radius: 10px 10px 4px 4px;
     }
 
-    &::after{
+    &::after {
       content: "";
       position: absolute;
       bottom: 5px;
@@ -268,7 +243,7 @@
     }
   }
 
-  .nav-menu__logo-img{
+  .nav-menu__logo-img {
     display: none;
   }
 
@@ -276,15 +251,17 @@
     margin-top: 0;
     font-size: 24px;
   }
+
   .nav-menu__container-title {
     display: none;
   }
+
   .nav-menu__links-container {
     display: none;
   }
+
   .nav-menu__links-container--main,
-  .nav-menu__links-container--tracking {
-    z-index: 1000;
+  .nav-menu__links-container--account {
     display: flex;
     position: fixed;
     bottom: 0;
@@ -311,17 +288,15 @@
 
   .nav-menu__links-container--main {
     left: 0;
-    z-index: 30;
-    padding-right: 0;
+    border-right: 1px solid var(--border-color);
   }
 
-  .nav-menu__links-container--tracking {
+  .nav-menu__links-container--account {
     right: 0;
-    z-index: 20;
-    padding-left:0;
+    border-left: 1px solid var(--border-color);
   }
 
-  .nav-menu__add-job{
+  .nav-menu__add-job {
     display: none !important;
   }
 

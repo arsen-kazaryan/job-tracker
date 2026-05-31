@@ -26,15 +26,15 @@ const JobCard = ({ company, position, date, status, statusType = 'applied', img,
           )}
         </div>
         <div className="job-card__job-info">
-          <h5>{company}</h5>
-          <p>{position}</p>
+          <h5>{company ? company : 'Company name'}</h5>
+          <p>{position ? position : 'position not defined'}</p>
         </div>
       </div>
       <div className="job-card__job-date">
-        {date}
+        {date ? date : 'no date'}
       </div>
       <button type='button' className={`job-card__status job-card__status--${statusType}`} onClick={(e) => {e.stopPropagation(); changeJobStatus(id)}}>
-        {status}
+        {status ? status : 'Not specified'}
       </button>
       <button type='button' className='delete-button' onClick={(e) => {e.stopPropagation(); deleteJob(id)}}>
         Delete

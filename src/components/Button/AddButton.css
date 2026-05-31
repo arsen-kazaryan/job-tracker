@@ -1,5 +1,6 @@
 .add-button{
   display: flex;
+  width: 30%;
   justify-content: center;
   align-items: center;
   border: none;
