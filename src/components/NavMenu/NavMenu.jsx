@@ -1,9 +1,10 @@
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import './NavMenu.css'
 import { useProfileStore } from '../../Store/useProfileStore'
 import { getFirstChar } from '../../utils/getFirstChar'
 
 const NavMenu = () => {
+  const navigate = useNavigate()
   const { name, role, avatar } = useProfileStore()
   const firstChar = getFirstChar(name)
 
@@ -49,7 +50,7 @@ const NavMenu = () => {
             }>About</NavLink>
         </div>
 
-        <div className="nav-menu__profile-container">
+        <div className="nav-menu__profile-container"onClick={()=> navigate('/settings')}>
           <div className="nav-menu__profile-img">
             {avatar
               ? <img src={avatar} alt="logoProfile" />
