@@ -43,11 +43,6 @@ const NavMenu = () => {
             className={({ isActive }) =>
               isActive ? 'nav-menu__settings nav-menu-link active' : 'nav-menu__settings nav-menu-link'
             }>Settings</NavLink>
-          <NavLink
-            to="/about"
-            className={({ isActive }) =>
-              isActive ? 'nav-menu__about nav-menu-link active' : 'nav-menu__about nav-menu-link'
-            }>About</NavLink>
         </div>
 
         <div className="nav-menu__profile-container"onClick={()=> navigate('/settings')}>

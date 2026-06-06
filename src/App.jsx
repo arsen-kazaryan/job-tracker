@@ -8,7 +8,6 @@ import JobCardPage from './Pages/JobCardPage/JobCardPage'
 import SettingsPage from './Pages/Settings/Settings'
 import NavMenu from './components/NavMenu/NavMenu'
 import NotFoundPage from './Pages/NotFoundPage/NotFoundPage'
-import AboutPage from './Pages/AboutPage/AboutPage'
 
 
 function App() {
@@ -22,7 +21,6 @@ function App() {
         <Route path="/addjob" element={<AddJob />} />
         <Route path="/job/:id" element={<JobCardPage />} />
         <Route path="/settings" element={<SettingsPage />} />
-        <Route path="/about" element={<AboutPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
